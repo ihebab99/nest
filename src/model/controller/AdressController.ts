@@ -8,7 +8,7 @@ import { Body, Controller, Get, Post } from "@nestjs/common";
 export class AdressController{
   constructor(private adressService:AdressService) {
   }
-  @Post()
+  @Post('/save')
   async createAdress(@Body()adress:Adress):Promise<Adress>{
     try {
       return this.adressService.createAdress(adress);
