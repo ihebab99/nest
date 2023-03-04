@@ -10,13 +10,21 @@ exports.AppModule = void 0;
 const common_1 = require("@nestjs/common");
 const app_controller_1 = require("./app.controller");
 const app_service_1 = require("./app.service");
+const typeorm_1 = require("@nestjs/typeorm");
+const config_1 = require("./config/config");
+const entities_1 = require("./model/entities");
+const AdressController_1 = require("./model/controller/AdressController");
+const AdressService_1 = require("./model/service/AdressService");
+const AdressRpository_1 = require("./model/repository/AdressRpository");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
     (0, common_1.Module)({
-        imports: [],
-        controllers: [app_controller_1.AppController],
-        providers: [app_service_1.AppService],
+        imports: [
+            typeorm_1.TypeOrmModule.forRoot(Object.assign(Object.assign({}, config_1.MysqlConfig), { entities: entities_1.Entities, synchronize: true, autoLoadEntities: true })),
+        ],
+        controllers: [app_controller_1.AppController, AdressController_1.AdressController],
+        providers: [app_service_1.AppService, AdressService_1.AdressService, AdressRpository_1.AdressRpository],
     })
 ], AppModule);
 exports.AppModule = AppModule;
