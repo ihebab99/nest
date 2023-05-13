@@ -10,7 +10,7 @@ export class AdressService{
 
   async createAdress(adress:Adress):Promise<Adress>{
     try {
-      return this.adressRepository.create(adress);
+      return this.adressRepository.createAdress(adress);
     }catch (error){
       throw error;
     }
